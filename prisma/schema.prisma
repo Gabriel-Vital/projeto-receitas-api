@@ -15,10 +15,14 @@ datasource db {
 }
 
 model Recipe {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  title       String
-  description String
-  ingredients String[]
-  steps       String[]
-  createdAt   DateTime @default(now())
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  title        String
+  image        String
+  cookTime     String
+  rating       Int?
+  category     String
+  description  String?
+  ingredients  String[]
+  instructions String[]
+  createdAt    DateTime @default(now())
 }
