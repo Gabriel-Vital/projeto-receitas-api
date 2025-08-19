@@ -22,20 +22,6 @@ model User {
   createdAt DateTime? @default(now())
 }
 
-model LoginData {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  email    String @unique
-  password String
-}
-
-model RegisterData {
-  id              String @id @default(auto()) @map("_id") @db.ObjectId
-  name            String
-  email           String @unique
-  password        String
-  confirmPassword String
-}
-
 model Recipe {
   id           String   @id @default(auto()) @map("_id") @db.ObjectId
   title        String
