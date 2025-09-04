@@ -59,10 +59,10 @@ router.post("/auth/login", async (req, res) => {
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
-      return res.status(401).send("Senha incorreta. Tente novamente.")
+      return res.status(401).send("Senha incorreta. Tente novamente.");
     }
 
-    const {password: _, ...userWithoutPassword} = user
+    const { password: _, ...userWithoutPassword } = user;
 
     const token = jwt.sign(
       {
@@ -75,7 +75,7 @@ router.post("/auth/login", async (req, res) => {
 
     return res.status(200).json({ user: userWithoutPassword, token });
   } catch (error) {
-    return res.status(500).json({error: error})
+    return res.status(500).json({ error: error });
   }
 });
 
