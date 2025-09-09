@@ -1,7 +1,5 @@
 const {PrismaClient} = require('../../generated/prisma')
 
-let recipes = [];
-
 const prisma = new PrismaClient()
 
 const createNewRecipe = async (req, res) => { 
@@ -35,19 +33,19 @@ const createNewRecipe = async (req, res) => {
         updatedAt: new Date(),
       },
     })
-
+    
+    
     return res.status(201).json(recipe);
   } catch (error) {
     console.error(error)
     return res.status(401).json({error: error})
   }
-
+  
 };
 
-const getAllRecipes = (req, res) => {
+const getAllRecipes = async (req, res) => {
+  let recipes = await prisma.recipe.findMany()
   res.status(200).json(recipes);
 };
-
-
 
 module.exports = { createNewRecipe, getAllRecipes };
