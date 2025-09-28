@@ -14,8 +14,7 @@ const validateToken = (req, res, next) => {
   } catch (error) {
     return res.status(401).send('Token inválido')
   }
-
-  console.log('token', token)
+  
   return next()
 }
 

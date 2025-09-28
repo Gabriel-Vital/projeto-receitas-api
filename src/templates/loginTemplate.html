@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Detectado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2196F3 0%, #0D47A1 100%);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .success-message {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .success-icon {
+            color: #2196F3;
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .footer {
+            background: #f1f5f9;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .button {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .button:hover {
+            background: #0b7dda;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 0;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .info-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Login Detectado em Sua Conta</h1>
+            <p>Notificação de segurança</p>
+        </div>
+        
+        <div class="content">
+            <div class="success-message">
+                <div class="success-icon">🔒</div>
+                <h2>Um novo login foi detectado em sua conta</h2>
+                <p>Se foi você, ignore este e-mail. Caso contrário, tome as devidas precauções.</p>
+            </div>
+            
+            <div class="info-box">
+                <h3>Detalhes do Acesso</h3>
+                
+                <div class="info-item">
+                    <span class="label">Data e hora:</span>
+                    <span class="value">{{login_date}}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="label">Localização aproximada:</span>
+                    <span class="value">{{location}}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="label">Dispositivo:</span>
+                    <span class="value">{{device}}</span>
+                </div>
+                
+                <div class="info-item">
+                    <span class="label">Status:</span>
+                    <span class="value" style="color: #2196F3; font-weight: 600;">Login bem-sucedido</span>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <p>Se você não realizou este login, proteja sua conta imediatamente.</p>
+                <a href="{{account_security_link}}" class="button">Verificar Atividade da Conta</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Em caso de dúvidas, entre em contato conosco: {{support_email}} | {{support_phone}}</p>
+            <p>© {{current_year}} {{company_name}} - Todos os direitos reservados</p>
+        </div>
+    </div>
+</body>
+</html>
