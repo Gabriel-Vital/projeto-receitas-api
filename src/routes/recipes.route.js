@@ -6,12 +6,12 @@ const middlewareValidate = require('../middlewares/validate')
 
 const router = express.Router();
 
-router.get("/recipes", getAllRecipes)
+router.get("/recipes", middlewareValidate, getAllRecipes)
 
-router.post('/recipes', createNewRecipe)
+router.post('/recipes', middlewareValidate, createNewRecipe)
 
-router.put("/recipes/:id", updateRecipe)
+router.put("/recipes/:id", middlewareValidate, updateRecipe)
 
-router.delete('/recipes/:id', deleteRecipe)
+router.delete('/recipes/:id', middlewareValidate, deleteRecipe)
 
 module.exports = router

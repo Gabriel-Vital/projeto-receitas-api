@@ -4,6 +4,7 @@ const middlewareValidate = require("../middlewares/validate");
 const { PrismaClient } = require("../../generated/prisma");
 const findUserByEmail = require("../services/user.services");
 const bcrypt = require("bcrypt");
+const { loginEmail, registerEmail } = require("../services/sendEmail.services");
 
 const prisma = new PrismaClient();
 
@@ -38,9 +39,10 @@ router.post("/auth/register", async (req, res) => {
       { expiresIn: "2h" }
     );
 
-    res.status(201).json({ token, user });
+    const sendEmail = registerEmail(user.email)
+
+    res.status(201).json({ token, user, sendEmail });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: error });
     throw new Error("Falha ao registrar");
   }
@@ -73,7 +75,9 @@ router.post("/auth/login", async (req, res) => {
       { expiresIn: "2h" }
     );
 
-    return res.status(200).json({ user: userWithoutPassword, token });
+    const sendEmail = loginEmail(email)
+
+    return res.status(200).json({ user: userWithoutPassword, token, sendEmail });
   } catch (error) {
     return res.status(500).json({ error: error });
   }
